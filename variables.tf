@@ -18,5 +18,10 @@ variable "annotations" {
   default = {
     mylabel = "label-value"
   }
+}
 
+variable "pods" {
+  description = "Please specify pod count"
+  type        = string
+  default     = "100"
 }

@@ -9,14 +9,15 @@ resource "kubernetes_namespace_v1" "this" {
 resource "kubernetes_resource_quota" "pod_limit" {
   metadata {
     name      = "pod-limit-quota"
-    namespace = kubernetes_namespace.example.metadata[0].name # Changed from 'this' to 'example'
+    namespace = kubernetes_namespace_v1.this.metadata[0].name # Changed from 'this' to 'example'
   }
 
   spec {
     hard = {
-      "pods" = "100"
+      "pods" = var.pods
     }
   }
 }
+
 
 
